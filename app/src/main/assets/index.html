@@ -8,33 +8,29 @@
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none}
 html,body{height:100%;overflow:hidden;background:#1c1510;font-family:monospace}
 #app{height:100%;display:flex;flex-direction:column;background:linear-gradient(180deg,#2a2016 0%,#1c1510 100%)}
-
-#hdr{padding:8px 14px 5px;text-align:center;border-bottom:2px solid #4a3820}
+#hdr{padding:8px 14px 5px;text-align:center;border-bottom:2px solid #4a3820;flex-shrink:0}
 #hdr h1{color:#e8c47a;font-size:19px;letter-spacing:4px;text-shadow:0 0 10px rgba(232,196,122,.4)}
 #hdr .sub{color:#7a6440;font-size:10px;letter-spacing:2px;margin-top:1px}
-
 #regPanel{display:flex;border-bottom:1px solid #4a3820;flex-shrink:0}
-.rSec{flex:1;padding:7px 6px}
+.rSec{flex:1;padding:6px 5px}
 .rSec.L{border-right:1px solid #4a3820}
-.rLbl{color:#5a4830;font-size:9px;letter-spacing:1px;text-align:center;margin-bottom:4px}
+.rLbl{color:#5a4830;font-size:9px;letter-spacing:1px;text-align:center;margin-bottom:3px}
 .rBtns{display:flex;flex-wrap:wrap;gap:3px;justify-content:center}
-.rbtn{flex:1 1 28%;min-width:54px;padding:5px 2px;text-align:center;background:#221a10;border:1px solid #4a3820;border-radius:4px;color:#7a6440;font-size:9px;line-height:1.3}
-.rbtn.on{background:#b89040;color:#120e08;border-color:#e8c47a;box-shadow:0 0 5px rgba(232,196,122,.5)}
-
-#fxRow{display:flex;flex-wrap:wrap;gap:6px;padding:7px 10px;border-bottom:1px solid #4a3820;flex-shrink:0;align-items:center}
+.rbtn{flex:1 1 28%;min-width:54px;padding:6px 2px;text-align:center;background:#221a10;border:1px solid #4a3820;border-radius:4px;color:#7a6440;font-size:9px;line-height:1.3;cursor:pointer}
+.rbtn.on{background:#b89040;color:#120e08;border-color:#e8c47a;box-shadow:0 0 6px rgba(232,196,122,.5)}
+#fxRow{display:flex;flex-wrap:wrap;gap:6px;padding:6px 10px;border-bottom:1px solid #4a3820;flex-shrink:0;align-items:center}
 .fxG{display:flex;align-items:center;gap:4px;flex:1;min-width:120px}
-.fxG label{color:#b89878;font-size:9px;white-space:nowrap;min-width:46px}
-input[type=range]{flex:1;-webkit-appearance:none;height:4px;background:#3a2e18;border-radius:2px}
+.fxG label{color:#b89878;font-size:9px;white-space:nowrap;min-width:48px}
+input[type=range]{flex:1;-webkit-appearance:none;height:4px;background:#3a2e18;border-radius:2px;outline:none}
 input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:15px;height:15px;border-radius:50%;background:#e8c47a;box-shadow:0 0 4px rgba(232,196,122,.5)}
-
-#ctrlRow{display:flex;align-items:center;gap:8px;padding:7px 10px;border-bottom:1px solid #4a3820;flex-shrink:0;flex-wrap:wrap}
-.sbtn{width:28px;height:28px;border-radius:5px;background:#2a2016;border:1px solid #4a3820;color:#e8c47a;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+#ctrlRow{display:flex;align-items:center;gap:7px;padding:6px 10px;border-bottom:1px solid #4a3820;flex-shrink:0;flex-wrap:wrap}
+.sbtn{width:28px;height:28px;border-radius:5px;background:#2a2016;border:1px solid #4a3820;color:#e8c47a;font-size:13px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
 .sbtn:active{background:#4a3820}
-.mlbl{color:#b89878;font-size:9px;min-width:60px;text-align:center}
-#sus{padding:7px 12px;border-radius:6px;background:#2a2016;border:1px solid #4a3820;color:#e8c47a;font-size:10px;letter-spacing:1px;flex-shrink:0}
+.mlbl{color:#b89878;font-size:9px;min-width:54px;text-align:center}
+#sus{padding:7px 12px;border-radius:6px;background:#2a2016;border:1px solid #4a3820;color:#e8c47a;font-size:10px;letter-spacing:1px;flex-shrink:0;cursor:pointer}
 #sus.on{background:#e8c47a;color:#120e08;box-shadow:0 0 10px rgba(232,196,122,.6)}
-.fxG.vol{flex:1;min-width:100px}
-
+#splitToggle{padding:5px 8px;border-radius:4px;background:#2a2016;border:1px solid #4a3820;color:#7a6440;font-size:9px;cursor:pointer;flex-shrink:0}
+#splitToggle.on{background:#3a2e18;color:#e8c47a;border-color:#4a3820}
 #kbArea{flex:1;position:relative;padding:0 4px 6px;min-height:0}
 #kbWrap{position:relative;height:100%;background:#0d0a06;border-radius:6px;overflow:hidden}
 #wKeys{position:absolute;top:0;left:0;right:0;bottom:0;display:flex}
@@ -43,8 +39,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:15px;heigh
 #bKeys{position:absolute;top:0;left:0;right:0;height:60%}
 .key.blk{position:absolute;top:0;height:100%;background:linear-gradient(180deg,#221a10 0%,#120e08 100%);border-radius:0 0 4px 4px;border:1px solid #000}
 .key.blk.act{background:linear-gradient(180deg,#4a3820 0%,#2a2016 100%)}
-#split{position:absolute;top:0;bottom:0;width:2px;background:#e8402a;z-index:5;pointer-events:none;opacity:.7}
-
+#splitMark{display:none;position:absolute;top:0;bottom:0;width:2px;background:#e8402a;z-index:5;pointer-events:none;opacity:.8}
 #hint{text-align:center;color:#4a3820;font-size:9px;padding:3px 0;flex-shrink:0}
 </style>
 </head>
@@ -54,7 +49,6 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:15px;heigh
     <h1>ТОМ-1501</h1>
     <div class="sub">ORCHESTRAL STRING SYNTHESIZER · ТУЛА</div>
   </div>
-
   <div id="regPanel">
     <div class="rSec L">
       <div class="rLbl">АККОМПАНЕМЕНТ</div>
@@ -65,331 +59,294 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:15px;heigh
       <div class="rBtns" id="rightRegs"></div>
     </div>
   </div>
-
   <div id="fxRow">
-    <div class="fxG">
-      <label>ВИБРАТО</label>
-      <input type="range" id="vibAmt" min="0" max="1" step="0.01" value="0">
-    </div>
-    <div class="fxG">
-      <label>СКОР. ВИБ.</label>
-      <input type="range" id="vibRate" min="3" max="9" step="0.1" value="5.2">
-    </div>
-    <div class="fxG vol">
-      <label>ГРОМКОСТЬ</label>
-      <input type="range" id="vol" min="0" max="1" step="0.01" value="0.82">
-    </div>
+    <div class="fxG"><label>ВИБРАТО</label><input type="range" id="vibAmt" min="0" max="1" step="0.01" value="0"></div>
+    <div class="fxG"><label>СКОР.ВИБ.</label><input type="range" id="vibRate" min="3" max="9" step="0.1" value="5.2"></div>
+    <div class="fxG"><label>ГРОМКОСТЬ</label><input type="range" id="vol" min="0" max="1" step="0.01" value="0.8"></div>
   </div>
-
   <div id="ctrlRow">
     <div class="sbtn" id="octD">−</div>
     <div class="mlbl" id="octLbl">Окт: 0</div>
     <div class="sbtn" id="octU">+</div>
+    <div id="splitToggle">СПЛИТ</div>
     <div class="sbtn" id="spD">◀</div>
-    <div class="mlbl">Сплит</div>
     <div class="sbtn" id="spU">▶</div>
     <div id="sus">SUSTAIN</div>
   </div>
-
   <div id="kbArea">
     <div id="kbWrap">
       <div id="wKeys"></div>
       <div id="bKeys"></div>
-      <div id="split"></div>
+      <div id="splitMark"></div>
     </div>
   </div>
-  <div id="hint">Свайп 2 пальца — октава · ◀▶ — точка сплита</div>
+  <div id="hint">Свайп 2 пальца — октава · СПЛИТ — раздел клавиатуры</div>
 </div>
 <script>
-// ===== TOM-1501 ENGINE v3 =====
-// Архитектура: аутентичный ensemble-эффект по схеме Solina/ARP String Ensemble
-// BBD ensemble: 3 линии задержки с точными временами и медленными LFO
-// Форма волны: пила + подчёркнутая 2-я гармоника через WaveShaper
+// TOM-1501 ENGINE v4
+// Каждый регистр — уникальная волна + уникальный фильтр
+// Сплит убран по умолчанию: все регистры играют на всей клавиатуре
+// Левые регистры = аккомпанемент (более низкий характер)
+// Правые регистры = соло (более яркий характер)
 
 let actx = null;
-let ensembleOut = null;
-let limiter = null;
+let preBus = null;
+let outGain = null;
 
 const voices = {};
-let sustainOn = false;
-const sustained = new Set();
 const noteOrder = [];
-const MAX_POLY = 12;
+const sustained = new Set();
+let sustainOn = false;
+const MAX_POLY = 10;
 
 const P = {
-  attack:      0.035,
-  release:     0.55,
-  vibratoRate: 5.2,
-  vibratoAmt:  0,       // по умолчанию выключено как на оригинале
-  volumePedal: 0.82,
-  splitPoint:  48,
   octaveShift: 0,
+  vibratoRate: 5.2,
+  vibratoAmt:  0,
+  volume:      0.8,
+  splitEnabled: false,  // по умолчанию выключен
+  splitPoint:   48,
 
-  // регистры — как органные стопы, можно несколько одновременно
-  // side: left/right, oct: смещение в октавах
   registers: {
-    bass16:   { side:'left',  oct:-1, gain:0.22, on:false },
-    cello8:   { side:'left',  oct: 0, gain:0.20, on:true  },
-    viola8:   { side:'left',  oct: 0, gain:0.18, on:false },
-    piano:    { side:'left',  oct: 0, gain:0.20, on:false },
-    clavier:  { side:'left',  oct: 0, gain:0.18, on:false },
-    accomp:   { side:'left',  oct: 0, gain:0.16, on:false },
-    violin8:  { side:'right', oct: 0, gain:0.20, on:true  },
-    violin4:  { side:'right', oct: 1, gain:0.16, on:false },
-    tutti:    { side:'right', oct: 0, gain:0.22, on:false },
-    brass:    { side:'right', oct: 0, gain:0.20, on:false },
-    trumpet:  { side:'right', oct: 0, gain:0.18, on:false },
+    // ===== ЛЕВАЯ ЧАСТЬ — АККОМПАНЕМЕНТ =====
+    bass16: {
+      side:'left', on:false, oct:-1, gain:0.24,
+      // контрабас: только основной тон + слабая 2-я гармоника, глубокий LP-фильтр
+      harmonics: [0, 1.0, 0.25, 0.08, 0.02],
+      filterType:'lowpass', filterFreq:600, filterQ:0.6,
+      attack:0.06, release:0.7
+    },
+    cello8: {
+      side:'left', on:true, oct:0, gain:0.20,
+      // виолончель: тёплый, 2-я гармоника подчёркнута, LP ~1400
+      harmonics: [0, 1.0, 0.60, 0.22, 0.10, 0.05],
+      filterType:'lowpass', filterFreq:1400, filterQ:0.7,
+      attack:0.055, release:0.65
+    },
+    viola8: {
+      side:'left', on:false, oct:0, gain:0.18,
+      // альт: чуть ярче виолончели, LP ~2200
+      harmonics: [0, 1.0, 0.55, 0.30, 0.14, 0.07, 0.03],
+      filterType:'lowpass', filterFreq:2200, filterQ:0.8,
+      attack:0.05, release:0.6
+    },
+    piano: {
+      side:'left', on:false, oct:0, gain:0.22,
+      // пианино: быстрая атака, много верхних гармоник, быстрый release
+      harmonics: [0, 1.0, 0.30, 0.18, 0.12, 0.08, 0.05, 0.03, 0.02],
+      filterType:'lowpass', filterFreq:5000, filterQ:0.3,
+      attack:0.003, release:0.28
+    },
+    clavier: {
+      side:'left', on:false, oct:0, gain:0.18,
+      // клавесин: очень быстрая атака, нечётные гармоники (квадратная), очень быстрый release
+      harmonics: [0, 1.0, 0.0, 0.55, 0.0, 0.28, 0.0, 0.14, 0.0, 0.07],
+      filterType:'bandpass', filterFreq:2800, filterQ:1.2,
+      attack:0.001, release:0.18
+    },
+    accomp: {
+      side:'left', on:false, oct:0, gain:0.16,
+      // аккомпанемент: мягкий ensemble, много гармоник, LP ~1800
+      harmonics: [0, 1.0, 0.50, 0.28, 0.15, 0.09, 0.05, 0.03],
+      filterType:'lowpass', filterFreq:1800, filterQ:0.5,
+      attack:0.08, release:0.7
+    },
+
+    // ===== ПРАВАЯ ЧАСТЬ — СОЛО =====
+    violin8: {
+      side:'right', on:true, oct:0, gain:0.20,
+      // скрипка 8': яркий стринг-звук, LP ~3500, подчёркнутые верхние гармоники
+      harmonics: [0, 1.0, 0.55, 0.38, 0.22, 0.14, 0.09, 0.05, 0.03],
+      filterType:'lowpass', filterFreq:3500, filterQ:0.9,
+      attack:0.04, release:0.6
+    },
+    violin4: {
+      side:'right', on:false, oct:1, gain:0.16,
+      // скрипка 4' (октава выше): очень яркий, LP ~5000
+      harmonics: [0, 1.0, 0.50, 0.35, 0.20, 0.13, 0.08, 0.05],
+      filterType:'lowpass', filterFreq:5000, filterQ:1.0,
+      attack:0.035, release:0.55
+    },
+    tutti: {
+      side:'right', on:false, oct:0, gain:0.22,
+      // tutti: самый полный звук, весь диапазон гармоник открыт
+      harmonics: [0, 1.0, 0.65, 0.42, 0.28, 0.18, 0.12, 0.07, 0.04, 0.02],
+      filterType:'lowpass', filterFreq:6000, filterQ:0.6,
+      attack:0.05, release:0.65
+    },
+    brass: {
+      side:'right', on:false, oct:0, gain:0.20,
+      // медные: квадратно-подобная волна (нечётные гармоники), резонансный LP
+      harmonics: [0, 1.0, 0.85, 0.65, 0.48, 0.35, 0.24, 0.16, 0.10, 0.06],
+      filterType:'lowpass', filterFreq:2400, filterQ:2.5,
+      attack:0.028, release:0.4
+    },
+    trumpet: {
+      side:'right', on:false, oct:0, gain:0.18,
+      // труба: насальный, резкий LP с высоким резонансом
+      harmonics: [0, 1.0, 0.80, 0.60, 0.42, 0.28, 0.18, 0.10, 0.05],
+      filterType:'lowpass', filterFreq:3200, filterQ:3.5,
+      attack:0.02, release:0.35
+    }
   }
 };
 
-// ===== WaveShaper для имитации выхода делителя частоты =====
-// Делитель даёт не чистую пилу — немного мягче, с подчёркнутой 2-й гармоникой
-function makeStringWave() {
-  const real = new Float32Array(16);
-  const imag = new Float32Array(16);
-  // основной тон + гармоники с убыванием (типичный спектр string divider)
-  real[0] = 0;
-  imag[1] = 1.0;    // основная
-  imag[2] = 0.55;   // 2-я — подчёркнута (характерно для делителей)
-  imag[3] = 0.28;
-  imag[4] = 0.15;
-  imag[5] = 0.10;
-  imag[6] = 0.07;
-  imag[7] = 0.05;
-  imag[8] = 0.04;
-  return actx.createPeriodicWave(real, imag, { disableNormalization: false });
+// ===== Кеш периодических волн =====
+const waveCache = {};
+function getWave(regKey) {
+  if (waveCache[regKey]) return waveCache[regKey];
+  const h = P.registers[regKey].harmonics;
+  const real = new Float32Array(h.length);
+  const imag = new Float32Array(h.length);
+  for (let i = 0; i < h.length; i++) imag[i] = h[i];
+  waveCache[regKey] = actx.createPeriodicWave(real, imag, { disableNormalization: false });
+  return waveCache[regKey];
 }
 
-function makeBrassWave() {
-  const real = new Float32Array(16);
-  const imag = new Float32Array(16);
-  real[0] = 0;
-  imag[1] = 1.0;
-  imag[2] = 0.8;
-  imag[3] = 0.6;
-  imag[4] = 0.4;
-  imag[5] = 0.25;
-  imag[6] = 0.15;
-  imag[7] = 0.08;
-  return actx.createPeriodicWave(real, imag, { disableNormalization: false });
-}
-
-function makePianoWave() {
-  const real = new Float32Array(16);
-  const imag = new Float32Array(16);
-  real[0] = 0;
-  imag[1] = 1.0;
-  imag[2] = 0.15;
-  imag[3] = 0.08;
-  imag[4] = 0.04;
-  return actx.createPeriodicWave(real, imag, { disableNormalization: false });
-}
-
-// ===== Аутентичный Ensemble BBD =====
-// По схеме ARP/Solina String Ensemble:
-// три BBD-ветки с задержками ~17ms / ~35ms / ~17ms
-// две медленные LFO (~0.5 и ~0.8 Гц) с разными фазами
-// именно это соотношение даёт характерный "плавающий" оркестровый звук
+// ===== BBD Ensemble (аутентичная схема Solina) =====
 function buildEnsemble(input, output) {
-  const dry = actx.createGain();
-  dry.gain.value = 0.45;
-  input.connect(dry);
-  dry.connect(output);
+  // сухой сигнал
+  const dry = actx.createGain(); dry.gain.value = 0.42;
+  input.connect(dry); dry.connect(output);
 
-  // LFO 1: медленный (~0.5 Гц)
-  const lfo1 = actx.createOscillator();
-  lfo1.frequency.value = 0.5;
-  const lfo1g = actx.createGain();
-  lfo1g.gain.value = 0.008;
-  lfo1.connect(lfo1g);
-  lfo1.start();
+  // LFO 1: ~0.5 Гц
+  const lfo1 = actx.createOscillator(); lfo1.frequency.value = 0.5;
+  const lg1  = actx.createGain();       lg1.gain.value = 0.009;
+  lfo1.connect(lg1); lfo1.start();
 
-  // LFO 2: чуть быстрее (~0.83 Гц), другая фаза — "биение"
-  const lfo2 = actx.createOscillator();
-  lfo2.frequency.value = 0.83;
-  const lfo2g = actx.createGain();
-  lfo2g.gain.value = 0.007;
-  lfo2.connect(lfo2g);
-  lfo2.start();
+  // LFO 2: ~0.83 Гц, противофаза
+  const lfo2 = actx.createOscillator(); lfo2.frequency.value = 0.83;
+  const lg2  = actx.createGain();       lg2.gain.value = 0.008;
+  lfo2.connect(lg2); lfo2.start();
 
-  // Ветка A: ~17ms, модуляция LFO1
-  const dA = actx.createDelay(0.1);
-  dA.delayTime.value = 0.017;
-  lfo1g.connect(dA.delayTime);
-  const gA = actx.createGain();
-  gA.gain.value = 0.48;
-  input.connect(dA);
-  dA.connect(gA);
-  gA.connect(output);
+  // Инвертор для противофазной модуляции
+  const inv = actx.createGain(); inv.gain.value = -1;
+  lg2.connect(inv);
 
-  // Ветка B: ~35ms, модуляция LFO2 (инвертированная)
-  const invB = actx.createGain();
-  invB.gain.value = -1;
-  lfo2g.connect(invB);
-  const dB = actx.createDelay(0.1);
-  dB.delayTime.value = 0.035;
-  invB.connect(dB.delayTime);
-  const gB = actx.createGain();
-  gB.gain.value = 0.38;
-  input.connect(dB);
-  dB.connect(gB);
-  gB.connect(output);
+  // Ветка A: 17ms + LFO1
+  const dA = actx.createDelay(0.08); dA.delayTime.value = 0.017;
+  lg1.connect(dA.delayTime);
+  const gA = actx.createGain(); gA.gain.value = 0.46;
+  input.connect(dA); dA.connect(gA); gA.connect(output);
 
-  // Ветка C: ~17ms + 8ms смещение, модуляция LFO1 другой полярностью
-  const invC = actx.createGain();
-  invC.gain.value = -1;
-  lfo1g.connect(invC);
-  const dC = actx.createDelay(0.1);
-  dC.delayTime.value = 0.025;
-  invC.connect(dC.delayTime);
-  const gC = actx.createGain();
-  gC.gain.value = 0.40;
-  input.connect(dC);
-  dC.connect(gC);
-  gC.connect(output);
+  // Ветка B: 35ms + LFO2 инверт
+  const dB = actx.createDelay(0.08); dB.delayTime.value = 0.035;
+  inv.connect(dB.delayTime);
+  const gB = actx.createGain(); gB.gain.value = 0.36;
+  input.connect(dB); dB.connect(gB); gB.connect(output);
+
+  // Ветка C: 25ms + LFO1 инверт
+  const inv2 = actx.createGain(); inv2.gain.value = -1;
+  lg1.connect(inv2);
+  const dC = actx.createDelay(0.08); dC.delayTime.value = 0.025;
+  inv2.connect(dC.delayTime);
+  const gC = actx.createGain(); gC.gain.value = 0.40;
+  input.connect(dC); dC.connect(gC); gC.connect(output);
 }
 
 function initAudio() {
   if (actx) return;
-  actx = new (window.AudioContext || window.webkitAudioContext)({
-    latencyHint: 'interactive',
-    sampleRate: 44100
-  });
+  actx = new (window.AudioContext || window.webkitAudioContext)({ latencyHint:'interactive', sampleRate:44100 });
 
-  // Шина перед ensemble
-  const preBus = actx.createGain();
-  preBus.gain.value = 1.0;
+  preBus = actx.createGain(); preBus.gain.value = 1.0;
 
-  // Шина после ensemble
-  ensembleOut = actx.createGain();
-  ensembleOut.gain.value = 1.0;
+  const ensOut = actx.createGain(); ensOut.gain.value = 1.0;
+  buildEnsemble(preBus, ensOut);
 
-  buildEnsemble(preBus, ensembleOut);
-
-  // Мягкий фильтр на выходе — убирает цифровой "блеск"
+  // Выходные фильтры — убирают цифровые артефакты
   const hpf = actx.createBiquadFilter();
-  hpf.type = 'highpass';
-  hpf.frequency.value = 55; // убрать подгудение низа
-
+  hpf.type = 'highpass'; hpf.frequency.value = 40;
   const lpf = actx.createBiquadFilter();
-  lpf.type = 'lowpass';
-  lpf.frequency.value = 7000; // срез верха как на реальных ВЧ-ограничителях тех лет
-  lpf.Q.value = 0.5;
+  lpf.type = 'lowpass';  lpf.frequency.value = 8000; lpf.Q.value = 0.5;
 
-  // Лимитер + вых. громкость
-  limiter = actx.createDynamicsCompressor();
-  limiter.threshold.value = -4;
-  limiter.knee.value = 4;
-  limiter.ratio.value = 10;
-  limiter.attack.value = 0.002;
+  const limiter = actx.createDynamicsCompressor();
+  limiter.threshold.value = -4; limiter.knee.value = 4;
+  limiter.ratio.value = 10;     limiter.attack.value = 0.002;
   limiter.release.value = 0.1;
 
-  const outGain = actx.createGain();
-  outGain.gain.value = P.volumePedal;
-  initAudio.outGain = outGain;
-  initAudio.preBus = preBus;
+  outGain = actx.createGain(); outGain.gain.value = P.volume;
 
-  ensembleOut.connect(hpf);
-  hpf.connect(lpf);
-  lpf.connect(limiter);
-  limiter.connect(outGain);
-  outGain.connect(actx.destination);
+  ensOut.connect(hpf); hpf.connect(lpf); lpf.connect(limiter);
+  limiter.connect(outGain); outGain.connect(actx.destination);
 
-  // Vibrato LFO (по умолчанию выключен)
-  const vLfo = actx.createOscillator();
-  vLfo.frequency.value = P.vibratoRate;
-  const vGain = actx.createGain();
-  vGain.gain.value = 0;
-  vLfo.connect(vGain);
-  vLfo.start();
-  initAudio.vibratoGain = vGain;
+  // Vibrato LFO
+  const vLfo = actx.createOscillator(); vLfo.frequency.value = P.vibratoRate;
+  const vGain = actx.createGain();      vGain.gain.value = 0;
+  vLfo.connect(vGain); vLfo.start();
+  initAudio.vGain = vGain;
+  initAudio.vLfo  = vLfo;
 }
 
-function midiToFreq(midi) {
-  return 440 * Math.pow(2, (midi - 69) / 12);
-}
+function midiToFreq(midi) { return 440 * Math.pow(2, (midi - 69) / 12); }
 
-function createVoice(midi, regKey) {
+function createRegVoice(midi, regKey) {
   const reg = P.registers[regKey];
-  const isBrass = regKey === 'brass' || regKey === 'trumpet';
-  const isPiano = regKey === 'piano' || regKey === 'clavier';
-
   const freq = midiToFreq(midi + P.octaveShift * 12 + reg.oct * 12);
 
-  // основной осциллятор с кастомной волной
-  const osc = actx.createOscillator();
-  if (isBrass) osc.setPeriodicWave(makeBrassWave());
-  else if (isPiano) osc.setPeriodicWave(makePianoWave());
-  else osc.setPeriodicWave(makeStringWave());
-  osc.frequency.value = freq;
-
-  // второй осциллятор чуть детюнирован — имитация двух слоёв делителя
+  const osc  = actx.createOscillator();
   const osc2 = actx.createOscillator();
-  if (isBrass) osc2.setPeriodicWave(makeBrassWave());
-  else if (isPiano) osc2.setPeriodicWave(makePianoWave());
-  else osc2.setPeriodicWave(makeStringWave());
+  const wave = getWave(regKey);
+  osc.setPeriodicWave(wave);
+  osc2.setPeriodicWave(wave);
+  osc.frequency.value  = freq;
   osc2.frequency.value = freq;
-  osc2.detune.value = 4.5; // ~4.5 цента — лёгкий chorus внутри голоса
+  osc2.detune.value    = 4.8; // лёгкая расстройка для "живости"
 
-  // vibrato подключаем к обоим
-  initAudio.vibratoGain.connect(osc.detune);
-  initAudio.vibratoGain.connect(osc2.detune);
+  // вибрато
+  initAudio.vGain.connect(osc.detune);
+  initAudio.vGain.connect(osc2.detune);
+
+  // per-register фильтр — именно он формирует тембр
+  const flt = actx.createBiquadFilter();
+  flt.type            = reg.filterType;
+  flt.frequency.value = reg.filterFreq;
+  flt.Q.value         = reg.filterQ;
 
   const env = actx.createGain();
   env.gain.value = 0;
 
-  // для фортепиано/клавесина — прямо в шину, минуя ensemble
-  const dest = (isPiano) ? actx.destination : initAudio.preBus;
+  osc.connect(flt); osc2.connect(flt); flt.connect(env); env.connect(preBus);
 
-  osc.connect(env);
-  osc2.connect(env);
-  env.connect(dest);
-
-  const gainVal = reg.gain;
   const now = actx.currentTime;
-  // attack медленнее для струнных, быстрее для клавишных
-  const atk = isPiano ? 0.003 : P.attack;
   env.gain.setValueAtTime(0, now);
-  env.gain.linearRampToValueAtTime(gainVal, now + atk);
+  env.gain.linearRampToValueAtTime(reg.gain, now + reg.attack);
 
-  osc.start();
-  osc2.start();
-
-  // cleanup после stop
+  osc.start(); osc2.start();
   osc2.onended = () => {
-    try { osc.disconnect(); osc2.disconnect(); env.disconnect(); } catch(e) {}
+    try { osc.disconnect(); osc2.disconnect(); flt.disconnect(); env.disconnect(); } catch(e) {}
   };
 
-  return { osc, osc2, env, release: isPiano ? 0.3 : P.release, regKey };
+  return { osc, osc2, env, release: reg.release };
+}
+
+function getActiveRegs(midi) {
+  if (P.splitEnabled) {
+    const side = midi < P.splitPoint ? 'left' : 'right';
+    return Object.keys(P.registers).filter(k => P.registers[k].side === side && P.registers[k].on);
+  }
+  // сплит выключен: все включённые регистры независимо от стороны
+  return Object.keys(P.registers).filter(k => P.registers[k].on);
 }
 
 function noteOn(midi) {
   if (!actx) initAudio();
   if (actx.state === 'suspended') actx.resume();
   if (voices[midi]) return;
-
-  const side = midi < P.splitPoint ? 'left' : 'right';
-  const activeRegs = Object.keys(P.registers).filter(k =>
-    P.registers[k].side === side && P.registers[k].on
-  );
-  if (!activeRegs.length) return;
-
-  // voice stealing если полифония переполнена
+  const regs = getActiveRegs(midi);
+  if (!regs.length) return;
   while (noteOrder.length >= MAX_POLY) {
     const old = noteOrder.shift();
     if (voices[old]) doRelease(old, 0.05);
   }
-
-  voices[midi] = activeRegs.map(k => createVoice(midi, k));
+  voices[midi] = regs.map(k => createRegVoice(midi, k));
   noteOrder.push(midi);
 }
 
-function doRelease(midi, fadeTime) {
-  const vs = voices[midi];
-  if (!vs) return;
+function doRelease(midi, fadeOverride) {
+  const vs = voices[midi]; if (!vs) return;
   const now = actx.currentTime;
-  const t = fadeTime !== undefined ? fadeTime : P.release;
   vs.forEach(v => {
+    const t = fadeOverride !== undefined ? fadeOverride : v.release;
     v.env.gain.cancelScheduledValues(now);
     v.env.gain.setValueAtTime(v.env.gain.value, now);
     v.env.gain.linearRampToValueAtTime(0, now + t);
@@ -397,8 +354,7 @@ function doRelease(midi, fadeTime) {
     v.osc2.stop(now + t + 0.05);
   });
   delete voices[midi];
-  const i = noteOrder.indexOf(midi);
-  if (i !== -1) noteOrder.splice(i, 1);
+  const i = noteOrder.indexOf(midi); if (i !== -1) noteOrder.splice(i, 1);
 }
 
 function noteOff(midi) {
@@ -412,37 +368,27 @@ function setSustain(on) {
   if (!on) { sustained.forEach(m => doRelease(m)); sustained.clear(); }
 }
 
-function setRegister(key, on) {
-  if (P.registers[key]) P.registers[key].on = on;
-}
-
-function setOctave(n) { P.octaveShift = Math.max(-2, Math.min(2, n)); }
-function setSplit(midi) { P.splitPoint = midi; }
-function setVibrato(amt) {
-  P.vibratoAmt = amt;
-  if (initAudio.vibratoGain) initAudio.vibratoGain.gain.value = amt * 8;
-}
-function setVibratoRate(hz) {
-  P.vibratoRate = hz;
-}
-function setVolume(v) {
-  P.volumePedal = v;
-  if (initAudio.outGain) initAudio.outGain.gain.value = v;
-}
+function setRegister(key, on) { if (P.registers[key]) P.registers[key].on = on; }
+function setOctave(n)         { P.octaveShift = Math.max(-2, Math.min(2, n)); }
+function setSplit(midi)        { P.splitPoint = midi; }
+function setSplitEnabled(on)  { P.splitEnabled = on; }
+function setVibrato(amt)      { P.vibratoAmt = amt; if (initAudio.vGain) initAudio.vGain.gain.value = amt * 9; }
+function setVibratoRate(hz)   { P.vibratoRate = hz;  if (initAudio.vLfo)  initAudio.vLfo.frequency.value = hz; }
+function setVolume(v)         { P.volume = v;        if (outGain)          outGain.gain.value = v; }
 
 window.TOM1501 = {
   noteOn, noteOff, setSustain, setRegister,
-  setOctave, setSplit, setVibrato, setVibratoRate, setVolume,
-  P
+  setOctave, setSplit, setSplitEnabled,
+  setVibrato, setVibratoRate, setVolume, P
 };
 
 </script>
 <script>
-// ===== TOM-1501 UI v3 =====
+// TOM-1501 UI v4
 
-const START_MIDI = 36; // C2 — расширяем диапазон
-const NUM_KEYS = 37;   // 3 октавы
-let octaveOffset = 0;
+const START_MIDI = 36;
+const NUM_KEYS   = 37;
+let octShift = 0;
 const pressed = new Set();
 
 const REG_LABELS = {
@@ -453,155 +399,145 @@ const REG_LABELS = {
 };
 
 function isBlack(midi) { return [1,3,6,8,10].includes(midi % 12); }
-function countWhites() {
-  let n = 0;
-  for (let i = 0; i < NUM_KEYS; i++) if (!isBlack(START_MIDI + i)) n++;
-  return n;
+function whiteCount() {
+  let n=0; for(let i=0;i<NUM_KEYS;i++) if(!isBlack(START_MIDI+i)) n++; return n;
 }
 
 function buildKeyboard() {
   const wc = document.getElementById('wKeys');
   const bc = document.getElementById('bKeys');
   wc.innerHTML = bc.innerHTML = '';
-  const ww = 100 / countWhites();
+  const ww = 100 / whiteCount();
   let wi = 0;
-  for (let i = 0; i < NUM_KEYS; i++) {
+  for (let i=0; i<NUM_KEYS; i++) {
     const midi = START_MIDI + i;
     const el = document.createElement('div');
     if (isBlack(midi)) {
-      el.className = 'key blk';
-      el.dataset.midi = midi;
-      el.style.left = (wi * ww - ww * 0.3) + '%';
-      el.style.width = (ww * 0.62) + '%';
-      bindKey(el, midi);
-      bc.appendChild(el);
+      el.className='key blk'; el.dataset.midi=midi;
+      el.style.left=(wi*ww - ww*0.3)+'%';
+      el.style.width=(ww*0.62)+'%';
+      bindKey(el, midi); bc.appendChild(el);
     } else {
-      el.className = 'key wht';
-      el.dataset.midi = midi;
-      el.style.width = ww + '%';
-      if (midi % 12 === 0) el.textContent = 'C' + (Math.floor(midi/12)-1);
-      bindKey(el, midi);
-      wc.appendChild(el);
-      wi++;
+      el.className='key wht'; el.dataset.midi=midi;
+      el.style.width=ww+'%';
+      if (midi%12===0) el.textContent='C'+(Math.floor(midi/12)-1);
+      bindKey(el, midi); wc.appendChild(el); wi++;
     }
   }
-  updateSplit();
 }
 
 function bindKey(el, midi) {
   const on = e => {
     e.preventDefault();
     if (pressed.has(midi)) return;
-    pressed.add(midi);
-    el.classList.add('act');
+    pressed.add(midi); el.classList.add('act');
     window.TOM1501.noteOn(midi);
   };
   const off = e => {
     if (e) e.preventDefault();
     if (!pressed.has(midi)) return;
-    pressed.delete(midi);
-    el.classList.remove('act');
+    pressed.delete(midi); el.classList.remove('act');
     window.TOM1501.noteOff(midi);
   };
-  el.addEventListener('touchstart', on, {passive:false});
-  el.addEventListener('touchend', off, {passive:false});
-  el.addEventListener('touchcancel', off, {passive:false});
-  el.addEventListener('mousedown', on);
-  el.addEventListener('mouseup', off);
+  el.addEventListener('touchstart', on,  {passive:false});
+  el.addEventListener('touchend',   off, {passive:false});
+  el.addEventListener('touchcancel',off, {passive:false});
+  el.addEventListener('mousedown',  on);
+  el.addEventListener('mouseup',    off);
   el.addEventListener('mouseleave', off);
 }
 
-function updateSplit() {
-  const sp = window.TOM1501.P.splitPoint;
-  let wi = 0;
-  for (let i = 0; i < NUM_KEYS; i++) {
-    if (START_MIDI + i >= sp) break;
-    if (!isBlack(START_MIDI + i)) wi++;
-  }
-  const pct = (wi / countWhites()) * 100;
-  document.getElementById('split').style.left = pct + '%';
-}
-
 function buildRegisters() {
-  ['leftRegs','rightRegs'].forEach(id => document.getElementById(id).innerHTML = '');
+  document.getElementById('leftRegs').innerHTML  = '';
+  document.getElementById('rightRegs').innerHTML = '';
   const regs = window.TOM1501.P.registers;
-  Object.keys(regs).forEach(k => {
-    const r = regs[k];
-    const btn = document.createElement('div');
-    btn.className = 'rbtn' + (r.on ? ' on' : '');
+  Object.keys(regs).forEach(function(k) {
+    var r   = regs[k];
+    var btn = document.createElement('div');
+    btn.className   = 'rbtn' + (r.on ? ' on' : '');
     btn.textContent = REG_LABELS[k] || k;
-    btn.dataset.regKey = k;
+    btn.setAttribute('data-rk', k);
     btn.onclick = function() {
-      var key = this.dataset.regKey;
+      var key = this.getAttribute('data-rk');
       var reg = window.TOM1501.P.registers[key];
-      reg.on = !reg.on;
+      reg.on  = !reg.on;
       this.classList.toggle('on', reg.on);
-      window.TOM1501.setRegister(key, reg.on);
     };
-    document.getElementById(r.side === 'left' ? 'leftRegs' : 'rightRegs').appendChild(btn);
+    document.getElementById(r.side==='left' ? 'leftRegs' : 'rightRegs').appendChild(btn);
   });
 }
 
 function bindControls() {
-  // sustain
-  const sb = document.getElementById('sus');
-  sb.addEventListener('touchstart', e => { e.preventDefault(); sb.classList.add('on'); window.TOM1501.setSustain(true); }, {passive:false});
-  sb.addEventListener('touchend', e => { e.preventDefault(); sb.classList.remove('on'); window.TOM1501.setSustain(false); }, {passive:false});
-  sb.addEventListener('mousedown', () => { sb.classList.add('on'); window.TOM1501.setSustain(true); });
-  sb.addEventListener('mouseup', () => { sb.classList.remove('on'); window.TOM1501.setSustain(false); });
+  var sb = document.getElementById('sus');
+  sb.addEventListener('touchstart', function(e){ e.preventDefault(); sb.classList.add('on');  window.TOM1501.setSustain(true);  }, {passive:false});
+  sb.addEventListener('touchend',   function(e){ e.preventDefault(); sb.classList.remove('on'); window.TOM1501.setSustain(false); }, {passive:false});
+  sb.addEventListener('mousedown',  function(){ sb.classList.add('on');  window.TOM1501.setSustain(true);  });
+  sb.addEventListener('mouseup',    function(){ sb.classList.remove('on'); window.TOM1501.setSustain(false); });
 
-  // vibrato
-  document.getElementById('vibAmt').addEventListener('input', e => window.TOM1501.setVibrato(parseFloat(e.target.value)));
-  document.getElementById('vibRate').addEventListener('input', e => window.TOM1501.setVibratoRate(parseFloat(e.target.value)));
+  document.getElementById('vibAmt').oninput  = function(){ window.TOM1501.setVibrato(parseFloat(this.value)); };
+  document.getElementById('vibRate').oninput = function(){ window.TOM1501.setVibratoRate(parseFloat(this.value)); };
+  document.getElementById('vol').oninput     = function(){ window.TOM1501.setVolume(parseFloat(this.value)); };
 
-  // volume
-  document.getElementById('vol').addEventListener('input', e => window.TOM1501.setVolume(parseFloat(e.target.value)));
-
-  // octave
-  document.getElementById('octD').onclick = () => {
-    octaveOffset = Math.max(-2, octaveOffset - 1);
-    window.TOM1501.setOctave(octaveOffset);
-    document.getElementById('octLbl').textContent = 'Окт: ' + (octaveOffset > 0 ? '+':'') + octaveOffset;
+  document.getElementById('octD').onclick = function(){
+    octShift = Math.max(-2, octShift-1);
+    window.TOM1501.setOctave(octShift);
+    document.getElementById('octLbl').textContent = 'Окт: '+(octShift>0?'+':'')+octShift;
   };
-  document.getElementById('octU').onclick = () => {
-    octaveOffset = Math.min(2, octaveOffset + 1);
-    window.TOM1501.setOctave(octaveOffset);
-    document.getElementById('octLbl').textContent = 'Окт: ' + (octaveOffset > 0 ? '+':'') + octaveOffset;
+  document.getElementById('octU').onclick = function(){
+    octShift = Math.min(2, octShift+1);
+    window.TOM1501.setOctave(octShift);
+    document.getElementById('octLbl').textContent = 'Окт: '+(octShift>0?'+':'')+octShift;
   };
 
-  // split
-  document.getElementById('spD').onclick = () => {
-    window.TOM1501.P.splitPoint = Math.max(START_MIDI+1, window.TOM1501.P.splitPoint - 1);
-    updateSplit();
+  // сплит вкл/выкл
+  document.getElementById('splitToggle').onclick = function(){
+    var on = window.TOM1501.P.splitEnabled = !window.TOM1501.P.splitEnabled;
+    this.classList.toggle('on', on);
+    document.getElementById('splitMark').style.display = on ? 'block' : 'none';
   };
-  document.getElementById('spU').onclick = () => {
-    window.TOM1501.P.splitPoint = Math.min(START_MIDI+NUM_KEYS-1, window.TOM1501.P.splitPoint + 1);
-    updateSplit();
+
+  document.getElementById('spD').onclick = function(){
+    window.TOM1501.P.splitPoint = Math.max(START_MIDI+1, window.TOM1501.P.splitPoint-1);
+    updateSplitMark();
+  };
+  document.getElementById('spU').onclick = function(){
+    window.TOM1501.P.splitPoint = Math.min(START_MIDI+NUM_KEYS-1, window.TOM1501.P.splitPoint+1);
+    updateSplitMark();
   };
 }
 
-// свайп двумя пальцами = смена октавы
+function updateSplitMark() {
+  var sp = window.TOM1501.P.splitPoint;
+  var wi = 0;
+  for (var i=0; i<NUM_KEYS; i++) {
+    if (START_MIDI+i >= sp) break;
+    if (!isBlack(START_MIDI+i)) wi++;
+  }
+  document.getElementById('splitMark').style.left = (wi / whiteCount() * 100) + '%';
+}
+
 function bindSwipe() {
-  const area = document.getElementById('kbArea');
-  let sx = null, swiped = false;
-  area.addEventListener('touchstart', e => { if (e.touches.length===2){sx=e.touches[0].clientX;swiped=false;} }, {passive:true});
-  area.addEventListener('touchmove', e => {
-    if (!sx||e.touches.length<2||swiped) return;
-    const dx = e.touches[0].clientX - sx;
-    if (Math.abs(dx)>50) {
-      octaveOffset = Math.max(-2,Math.min(2,octaveOffset+(dx>0?1:-1)));
-      window.TOM1501.setOctave(octaveOffset);
-      document.getElementById('octLbl').textContent = 'Окт: ' + (octaveOffset>0?'+':'') + octaveOffset;
-      swiped=true;
+  var area = document.getElementById('kbArea');
+  var sx = null, sw = false;
+  area.addEventListener('touchstart', function(e){ if(e.touches.length===2){sx=e.touches[0].clientX;sw=false;} }, {passive:true});
+  area.addEventListener('touchmove',  function(e){
+    if(!sx||e.touches.length<2||sw) return;
+    var dx=e.touches[0].clientX-sx;
+    if(Math.abs(dx)>50){
+      octShift=Math.max(-2,Math.min(2,octShift+(dx>0?1:-1)));
+      window.TOM1501.setOctave(octShift);
+      document.getElementById('octLbl').textContent='Окт: '+(octShift>0?'+':'')+octShift;
+      sw=true;
     }
   }, {passive:true});
 }
 
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', function(){
   buildKeyboard();
   buildRegisters();
   bindControls();
   bindSwipe();
+  updateSplitMark();
 });
 
 </script>
