@@ -2,678 +2,603 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <title>ТОМ-1501</title>
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color: transparent; user-select:none; }
-  html, body { height:100%; overflow:hidden; background:#1a1410; font-family: 'Courier New', monospace; }
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none}
+html,body{height:100%;overflow:hidden;background:#1c1510;font-family:monospace}
+#app{height:100%;display:flex;flex-direction:column;background:linear-gradient(180deg,#2a2016 0%,#1c1510 100%)}
 
-  #app { height:100%; display:flex; flex-direction:column; background: linear-gradient(180deg, #2b2118 0%, #1a1410 100%); overflow-y:auto; }
+#hdr{padding:8px 14px 5px;text-align:center;border-bottom:2px solid #4a3820}
+#hdr h1{color:#e8c47a;font-size:19px;letter-spacing:4px;text-shadow:0 0 10px rgba(232,196,122,.4)}
+#hdr .sub{color:#7a6440;font-size:10px;letter-spacing:2px;margin-top:1px}
 
-  #header { padding:10px 16px 6px; text-align:center; border-bottom:2px solid #4a3a26; flex-shrink:0; }
-  #header h1 { color:#e8c97a; font-size:20px; letter-spacing:4px; text-shadow: 0 0 8px rgba(232,201,122,0.4); }
-  #header .sub { color:#8a7456; font-size:10px; letter-spacing:2px; margin-top:2px; }
+#regPanel{display:flex;border-bottom:1px solid #4a3820;flex-shrink:0}
+.rSec{flex:1;padding:7px 6px}
+.rSec.L{border-right:1px solid #4a3820}
+.rLbl{color:#5a4830;font-size:9px;letter-spacing:1px;text-align:center;margin-bottom:4px}
+.rBtns{display:flex;flex-wrap:wrap;gap:3px;justify-content:center}
+.rbtn{flex:1 1 28%;min-width:54px;padding:5px 2px;text-align:center;background:#221a10;border:1px solid #4a3820;border-radius:4px;color:#7a6440;font-size:9px;line-height:1.3}
+.rbtn.on{background:#b89040;color:#120e08;border-color:#e8c47a;box-shadow:0 0 5px rgba(232,196,122,.5)}
 
-  /* ===== Панель регистров ===== */
-  #registerPanel {
-    display:flex;
-    border-bottom:1px solid #4a3a26;
-    flex-shrink:0;
-  }
-  .reg-section { flex:1; padding:8px; }
-  .reg-section.left { border-right:1px solid #4a3a26; }
-  .reg-label { color:#5a4a32; font-size:9px; letter-spacing:1px; margin-bottom:4px; text-align:center; }
-  .reg-buttons { display:flex; flex-wrap:wrap; gap:4px; justify-content:center; }
-  .reg-btn {
-    flex:1 1 30%;
-    min-width:60px;
-    padding:6px 3px;
-    text-align:center;
-    background:#2b2118;
-    border:1px solid #5a4a32;
-    border-radius:4px;
-    color:#8a7456;
-    font-size:9px;
-    line-height:1.2;
-  }
-  .reg-btn.active {
-    background:#c9a050;
-    color:#1a1410;
-    border-color:#e8c97a;
-    box-shadow:0 0 6px rgba(232,201,122,0.5);
-  }
+#fxRow{display:flex;flex-wrap:wrap;gap:6px;padding:7px 10px;border-bottom:1px solid #4a3820;flex-shrink:0;align-items:center}
+.fxG{display:flex;align-items:center;gap:4px;flex:1;min-width:120px}
+.fxG label{color:#b89878;font-size:9px;white-space:nowrap;min-width:46px}
+input[type=range]{flex:1;-webkit-appearance:none;height:4px;background:#3a2e18;border-radius:2px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:15px;height:15px;border-radius:50%;background:#e8c47a;box-shadow:0 0 4px rgba(232,196,122,.5)}
 
-  /* ===== Эффекты ===== */
-  #fxPanel { display:flex; flex-wrap:wrap; gap:8px; padding:8px 12px; border-bottom:1px solid #4a3a26; flex-shrink:0; }
-  .fx-group { display:flex; align-items:center; gap:5px; flex:1; min-width:130px; }
-  .fx-group label { color:#c9a96b; font-size:9px; white-space:nowrap; min-width:50px; }
-  input[type=range] { flex:1; -webkit-appearance:none; height:4px; background:#4a3a26; border-radius:2px; outline:none; }
-  input[type=range]::-webkit-slider-thumb { -webkit-appearance:none; width:14px; height:14px; border-radius:50%; background:#e8c97a; box-shadow:0 0 4px rgba(232,201,122,0.6); }
+#ctrlRow{display:flex;align-items:center;gap:8px;padding:7px 10px;border-bottom:1px solid #4a3820;flex-shrink:0;flex-wrap:wrap}
+.sbtn{width:28px;height:28px;border-radius:5px;background:#2a2016;border:1px solid #4a3820;color:#e8c47a;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sbtn:active{background:#4a3820}
+.mlbl{color:#b89878;font-size:9px;min-width:60px;text-align:center}
+#sus{padding:7px 12px;border-radius:6px;background:#2a2016;border:1px solid #4a3820;color:#e8c47a;font-size:10px;letter-spacing:1px;flex-shrink:0}
+#sus.on{background:#e8c47a;color:#120e08;box-shadow:0 0 10px rgba(232,196,122,.6)}
+.fxG.vol{flex:1;min-width:100px}
 
-  #chorusToggle {
-    padding:5px 10px; border-radius:4px; background:#2b2118; border:1px solid #5a4a32;
-    color:#8a7456; font-size:9px; letter-spacing:1px;
-  }
-  #chorusToggle.active { background:#c9a050; color:#1a1410; border-color:#e8c97a; }
+#kbArea{flex:1;position:relative;padding:0 4px 6px;min-height:0}
+#kbWrap{position:relative;height:100%;background:#0d0a06;border-radius:6px;overflow:hidden}
+#wKeys{position:absolute;top:0;left:0;right:0;bottom:0;display:flex}
+.key.wht{height:100%;background:linear-gradient(180deg,#ede3ce 0%,#d8ccb0 100%);border-right:1px solid #7a6840;display:flex;align-items:flex-end;justify-content:center;padding-bottom:5px;font-size:8px;color:#7a6840}
+.key.wht.act{background:linear-gradient(180deg,#c9a040 0%,#b08030 100%)}
+#bKeys{position:absolute;top:0;left:0;right:0;height:60%}
+.key.blk{position:absolute;top:0;height:100%;background:linear-gradient(180deg,#221a10 0%,#120e08 100%);border-radius:0 0 4px 4px;border:1px solid #000}
+.key.blk.act{background:linear-gradient(180deg,#4a3820 0%,#2a2016 100%)}
+#split{position:absolute;top:0;bottom:0;width:2px;background:#e8402a;z-index:5;pointer-events:none;opacity:.7}
 
-  /* ===== Нижний ряд: октава / сплит / сустейн / громкость ===== */
-  #bottomControls {
-    display:flex; align-items:center; gap:10px; padding:8px 12px;
-    border-bottom:1px solid #4a3a26; flex-shrink:0; flex-wrap:wrap;
-  }
-  .small-btn {
-    width:28px; height:28px; border-radius:5px; background:#3a2e1f; border:1px solid #5a4a32;
-    color:#e8c97a; font-size:14px; display:flex; align-items:center; justify-content:center;
-  }
-  .small-btn:active { background:#5a4a32; }
-  .mini-label { color:#c9a96b; font-size:9px; min-width:70px; text-align:center; }
-  #octaveLabel { min-width:70px; }
-
-  #sustainBtn {
-    padding:8px 14px; border-radius:6px; background:#3a2e1f; border:1px solid #5a4a32;
-    color:#e8c97a; font-size:10px; letter-spacing:1px;
-  }
-  #sustainBtn.active { background:#e8c97a; color:#1a1410; box-shadow:0 0 10px rgba(232,201,122,0.6); }
-
-  #volumePedalGroup { display:flex; align-items:center; gap:5px; flex:1; min-width:110px; }
-  #volumePedalGroup label { color:#c9a96b; font-size:9px; }
-
-  /* ===== Клавиатура ===== */
-  #keyboardArea { flex:1; position:relative; padding:0 4px 6px; min-height:140px; }
-  #keyboardWrap { position:relative; height:100%; background:#0d0a07; border-radius:6px; overflow:hidden; }
-  #whiteKeys { position:absolute; top:0; left:0; right:0; bottom:0; display:flex; }
-  .key.white {
-    height:100%; background:linear-gradient(180deg, #f2e8d5 0%, #e0d2b5 100%);
-    border-right:1px solid #8a7456; display:flex; align-items:flex-end; justify-content:center;
-    padding-bottom:6px; font-size:9px; color:#8a7456;
-  }
-  .key.white.active { background:linear-gradient(180deg, #d4b876 0%, #c9a050 100%); }
-  #blackKeys { position:absolute; top:0; left:0; right:0; height:60%; }
-  .key.black {
-    position:absolute; top:0; height:100%; background:linear-gradient(180deg, #2b2118 0%, #161009 100%);
-    border-radius:0 0 4px 4px; border:1px solid #000;
-  }
-  .key.black.active { background:linear-gradient(180deg, #5a4a32 0%, #3a2e1f 100%); }
-
-  #splitMarker { position:absolute; top:0; bottom:0; width:2px; background:#e8455a; z-index:5; pointer-events:none; opacity:0.7; }
-
-  #hint { text-align:center; color:#5a4a32; font-size:9px; padding:3px 0; flex-shrink:0; }
+#hint{text-align:center;color:#4a3820;font-size:9px;padding:3px 0;flex-shrink:0}
 </style>
 </head>
 <body>
 <div id="app">
-  <div id="header">
+  <div id="hdr">
     <h1>ТОМ-1501</h1>
-    <div class="sub">ORCHESTRAL STRING SYNTHESIZER · TULA</div>
+    <div class="sub">ORCHESTRAL STRING SYNTHESIZER · ТУЛА</div>
   </div>
 
-  <div id="registerPanel">
-    <div class="reg-section left">
-      <div class="reg-label">ЛЕВАЯ ЧАСТЬ — АККОМПАНЕМЕНТ</div>
-      <div class="reg-buttons" id="leftRegisters"></div>
+  <div id="regPanel">
+    <div class="rSec L">
+      <div class="rLbl">АККОМПАНЕМЕНТ</div>
+      <div class="rBtns" id="leftRegs"></div>
     </div>
-    <div class="reg-section right">
-      <div class="reg-label">ПРАВАЯ ЧАСТЬ — СОЛО</div>
-      <div class="reg-buttons" id="rightRegisters"></div>
+    <div class="rSec">
+      <div class="rLbl">СОЛО</div>
+      <div class="rBtns" id="rightRegs"></div>
     </div>
   </div>
 
-  <div id="fxPanel">
-    <div class="fx-group">
+  <div id="fxRow">
+    <div class="fxG">
       <label>ВИБРАТО</label>
-      <input type="range" id="vibratoDepth" min="0" max="1" step="0.01" value="0.25">
+      <input type="range" id="vibAmt" min="0" max="1" step="0.01" value="0">
     </div>
-    <div class="fx-group">
-      <label>ЧАСТОТА ВИБР.</label>
-      <input type="range" id="vibratoRate" min="3" max="9" step="0.1" value="5.5">
+    <div class="fxG">
+      <label>СКОР. ВИБ.</label>
+      <input type="range" id="vibRate" min="3" max="9" step="0.1" value="5.2">
     </div>
-    <div id="chorusToggle" class="active">ХОРУС</div>
-    <div class="fx-group">
-      <label>БРАСС СРЕЗ</label>
-      <input type="range" id="brassCutoff" min="400" max="6000" step="10" value="2200">
-    </div>
-    <div class="fx-group">
-      <label>БРАСС РЕЗ.</label>
-      <input type="range" id="brassQ" min="0.3" max="6" step="0.1" value="1.5">
-    </div>
-  </div>
-
-  <div id="bottomControls">
-    <div class="small-btn" id="octaveLeft">−</div>
-    <div class="mini-label" id="octaveLabel">Октава: 0</div>
-    <div class="small-btn" id="octaveRight">+</div>
-
-    <div class="small-btn" id="splitDown">◀</div>
-    <div class="mini-label">Сплит</div>
-    <div class="small-btn" id="splitUp">▶</div>
-
-    <div id="sustainBtn">SUSTAIN</div>
-
-    <div id="volumePedalGroup">
+    <div class="fxG vol">
       <label>ГРОМКОСТЬ</label>
-      <input type="range" id="volumePedal" min="0" max="1" step="0.01" value="0.85">
+      <input type="range" id="vol" min="0" max="1" step="0.01" value="0.82">
     </div>
   </div>
 
-  <div id="keyboardArea">
-    <div id="keyboardWrap">
-      <div id="whiteKeys"></div>
-      <div id="blackKeys"></div>
-      <div id="splitMarker"></div>
+  <div id="ctrlRow">
+    <div class="sbtn" id="octD">−</div>
+    <div class="mlbl" id="octLbl">Окт: 0</div>
+    <div class="sbtn" id="octU">+</div>
+    <div class="sbtn" id="spD">◀</div>
+    <div class="mlbl">Сплит</div>
+    <div class="sbtn" id="spU">▶</div>
+    <div id="sus">SUSTAIN</div>
+  </div>
+
+  <div id="kbArea">
+    <div id="kbWrap">
+      <div id="wKeys"></div>
+      <div id="bKeys"></div>
+      <div id="split"></div>
     </div>
   </div>
-  <div id="hint">Свайп двумя пальцами — октава · ◀▶ — точка сплита клавиатуры</div>
+  <div id="hint">Свайп 2 пальца — октава · ◀▶ — точка сплита</div>
 </div>
-
 <script>
-// ===== TOM-1501 ENGINE v2 =====
-// Блоки по спецификации: задающий генератор, 12 манипуляторов (делители),
-// ГНЧ (генератор инфранизкой частоты), линия задержки, брасс-фильтр,
-// блок фильтров, выходные усилители, педаль громкости, педаль сустейна.
+// ===== TOM-1501 ENGINE v3 =====
+// Архитектура: аутентичный ensemble-эффект по схеме Solina/ARP String Ensemble
+// BBD ensemble: 3 линии задержки с точными временами и медленными LFO
+// Форма волны: пила + подчёркнутая 2-я гармоника через WaveShaper
 
 let actx = null;
-let masterBus = null;     // общая шина после регистров, до хоруса/брасс-фильтра
-let chorusSend = null;
-let brassFilterNode = null;
-let outputGain = null;    // управляется педалью громкости
+let ensembleOut = null;
+let limiter = null;
 
-const activeVoices = {};  // midiNote -> [voiceObjects по активным регистрам]
+const voices = {};
 let sustainOn = false;
-const sustainedVoices = new Set();
+const sustained = new Set();
+const noteOrder = [];
+const MAX_POLY = 12;
 
-const SPLIT_POINT_DEFAULT = 60; // C4 — точка раздела левой/правой части
-
-const state = {
+const P = {
+  attack:      0.035,
+  release:     0.55,
+  vibratoRate: 5.2,
+  vibratoAmt:  0,       // по умолчанию выключено как на оригинале
+  volumePedal: 0.82,
+  splitPoint:  60,
   octaveShift: 0,
-  vibratoDepth: 0.25,
-  vibratoRate: 5.5,
-  chorusOn: true,
-  brassCutoff: 2200,
-  brassQ: 1.5,
-  volumePedal: 0.85,
-  splitPoint: SPLIT_POINT_DEFAULT,
-  drift: 0.003 // 0.3% нестабильность задающего генератора, как в ТХ
+
+  // регистры — как органные стопы, можно несколько одновременно
+  // side: left/right, oct: смещение в октавах
+  registers: {
+    bass16:   { side:'left',  oct:-1, gain:0.22, on:false },
+    cello8:   { side:'left',  oct: 0, gain:0.20, on:true  },
+    viola8:   { side:'left',  oct: 0, gain:0.18, on:false },
+    piano:    { side:'left',  oct: 0, gain:0.20, on:false },
+    clavier:  { side:'left',  oct: 0, gain:0.18, on:false },
+    accomp:   { side:'left',  oct: 0, gain:0.16, on:false },
+    violin8:  { side:'right', oct: 0, gain:0.20, on:true  },
+    violin4:  { side:'right', oct: 1, gain:0.16, on:false },
+    tutti:    { side:'right', oct: 0, gain:0.22, on:false },
+    brass:    { side:'right', oct: 0, gain:0.20, on:false },
+    trumpet:  { side:'right', oct: 0, gain:0.18, on:false },
+  }
 };
 
-// ===== Регистры =====
-// side: 'left' (аккомпанемент) | 'right' (соло)
-// type: тип осциллятора/фильтра, формирующий характер тембра
-// throughChorus: проходит ли через линию задержки (хорус)
-// throughBrass: проходит ли через брасс-фильтр
-const REGISTERS = {
-  // левая часть — аккомпанемент
-  bass16:    { side:'left',  name:'Контрабас 16\'', wave:'sawtooth', octaveOffset:-1, filterFreq:1200, filterQ:0.6, attack:0.05, release:0.5, throughChorus:true,  throughBrass:false, gain:0.16 },
-  cello8:    { side:'left',  name:'Виолончель 8\'', wave:'sawtooth', octaveOffset:0,  filterFreq:1800, filterQ:0.7, attack:0.06, release:0.6, throughChorus:true,  throughBrass:false, gain:0.15 },
-  viola8:    { side:'left',  name:'Альты 8\'',      wave:'sawtooth', octaveOffset:0,  filterFreq:2200, filterQ:0.7, attack:0.05, release:0.55,throughChorus:true,  throughBrass:false, gain:0.14 },
-  piano:     { side:'left',  name:'Пианино',        wave:'triangle', octaveOffset:0,  filterFreq:3500, filterQ:0.3, attack:0.002,release:0.35,throughChorus:false, throughBrass:false, gain:0.18 },
-  clavier:   { side:'left',  name:'Клавесин',       wave:'square',   octaveOffset:0,  filterFreq:4200, filterQ:0.4, attack:0.001,release:0.25,throughChorus:false, throughBrass:false, gain:0.13 },
-  accomp:    { side:'left',  name:'Аккомпанемент',  wave:'sawtooth', octaveOffset:0,  filterFreq:1600, filterQ:0.5, attack:0.08, release:0.7, throughChorus:true,  throughBrass:false, gain:0.13 },
+// ===== WaveShaper для имитации выхода делителя частоты =====
+// Делитель даёт не чистую пилу — немного мягче, с подчёркнутой 2-й гармоникой
+function makeStringWave() {
+  const real = new Float32Array(16);
+  const imag = new Float32Array(16);
+  // основной тон + гармоники с убыванием (типичный спектр string divider)
+  real[0] = 0;
+  imag[1] = 1.0;    // основная
+  imag[2] = 0.55;   // 2-я — подчёркнута (характерно для делителей)
+  imag[3] = 0.28;
+  imag[4] = 0.15;
+  imag[5] = 0.10;
+  imag[6] = 0.07;
+  imag[7] = 0.05;
+  imag[8] = 0.04;
+  return actx.createPeriodicWave(real, imag, { disableNormalization: false });
+}
 
-  // правая часть — соло
-  violin8:   { side:'right', name:'Скрипки 8\'',    wave:'sawtooth', octaveOffset:0,  filterFreq:3200, filterQ:0.8, attack:0.04, release:0.6, throughChorus:true,  throughBrass:false, gain:0.17 },
-  violin4:   { side:'right', name:'Скрипки 4\'',    wave:'sawtooth', octaveOffset:1,  filterFreq:3800, filterQ:0.8, attack:0.04, release:0.6, throughChorus:true,  throughBrass:false, gain:0.13 },
-  strings:   { side:'right', name:'Смычковые tutti',wave:'sawtooth', octaveOffset:0,  filterFreq:2600, filterQ:0.6, attack:0.06, release:0.65,throughChorus:true,  throughBrass:false, gain:0.16 },
-  brass:     { side:'right', name:'Медные',         wave:'square',   octaveOffset:0,  filterFreq:2000, filterQ:1.0, attack:0.03, release:0.4, throughChorus:false, throughBrass:true,  gain:0.16 },
-  trumpet:   { side:'right', name:'Труба',          wave:'sawtooth', octaveOffset:0,  filterFreq:2400, filterQ:1.3, attack:0.02, release:0.35,throughChorus:false, throughBrass:true,  gain:0.15 }
-};
+function makeBrassWave() {
+  const real = new Float32Array(16);
+  const imag = new Float32Array(16);
+  real[0] = 0;
+  imag[1] = 1.0;
+  imag[2] = 0.8;
+  imag[3] = 0.6;
+  imag[4] = 0.4;
+  imag[5] = 0.25;
+  imag[6] = 0.15;
+  imag[7] = 0.08;
+  return actx.createPeriodicWave(real, imag, { disableNormalization: false });
+}
 
-const activeRegisters = {
-  left: new Set(['cello8']),
-  right: new Set(['violin8'])
-};
+function makePianoWave() {
+  const real = new Float32Array(16);
+  const imag = new Float32Array(16);
+  real[0] = 0;
+  imag[1] = 1.0;
+  imag[2] = 0.15;
+  imag[3] = 0.08;
+  imag[4] = 0.04;
+  return actx.createPeriodicWave(real, imag, { disableNormalization: false });
+}
+
+// ===== Аутентичный Ensemble BBD =====
+// По схеме ARP/Solina String Ensemble:
+// три BBD-ветки с задержками ~17ms / ~35ms / ~17ms
+// две медленные LFO (~0.5 и ~0.8 Гц) с разными фазами
+// именно это соотношение даёт характерный "плавающий" оркестровый звук
+function buildEnsemble(input, output) {
+  const dry = actx.createGain();
+  dry.gain.value = 0.45;
+  input.connect(dry);
+  dry.connect(output);
+
+  // LFO 1: медленный (~0.5 Гц)
+  const lfo1 = actx.createOscillator();
+  lfo1.frequency.value = 0.5;
+  const lfo1g = actx.createGain();
+  lfo1g.gain.value = 0.008;
+  lfo1.connect(lfo1g);
+  lfo1.start();
+
+  // LFO 2: чуть быстрее (~0.83 Гц), другая фаза — "биение"
+  const lfo2 = actx.createOscillator();
+  lfo2.frequency.value = 0.83;
+  const lfo2g = actx.createGain();
+  lfo2g.gain.value = 0.007;
+  lfo2.connect(lfo2g);
+  lfo2.start();
+
+  // Ветка A: ~17ms, модуляция LFO1
+  const dA = actx.createDelay(0.1);
+  dA.delayTime.value = 0.017;
+  lfo1g.connect(dA.delayTime);
+  const gA = actx.createGain();
+  gA.gain.value = 0.48;
+  input.connect(dA);
+  dA.connect(gA);
+  gA.connect(output);
+
+  // Ветка B: ~35ms, модуляция LFO2 (инвертированная)
+  const invB = actx.createGain();
+  invB.gain.value = -1;
+  lfo2g.connect(invB);
+  const dB = actx.createDelay(0.1);
+  dB.delayTime.value = 0.035;
+  invB.connect(dB.delayTime);
+  const gB = actx.createGain();
+  gB.gain.value = 0.38;
+  input.connect(dB);
+  dB.connect(gB);
+  gB.connect(output);
+
+  // Ветка C: ~17ms + 8ms смещение, модуляция LFO1 другой полярностью
+  const invC = actx.createGain();
+  invC.gain.value = -1;
+  lfo1g.connect(invC);
+  const dC = actx.createDelay(0.1);
+  dC.delayTime.value = 0.025;
+  invC.connect(dC.delayTime);
+  const gC = actx.createGain();
+  gC.gain.value = 0.40;
+  input.connect(dC);
+  dC.connect(gC);
+  gC.connect(output);
+}
 
 function initAudio() {
   if (actx) return;
-  actx = new (window.AudioContext || window.webkitAudioContext)();
-
-  outputGain = actx.createGain();
-  outputGain.gain.value = state.volumePedal;
-  outputGain.connect(actx.destination);
-
-  masterBus = actx.createGain();
-  masterBus.gain.value = 1.0;
-
-  // ===== Линия задержки / хорус (BBD-имитация) =====
-  chorusSend = actx.createGain();
-  chorusSend.gain.value = 1.0;
-
-  const dry = actx.createGain();
-  dry.gain.value = 0.5;
-  const wet = actx.createGain();
-  wet.gain.value = 0.9;
-
-  masterBus.connect(dry);
-  dry.connect(chorusSend);
-
-  const lfoRates = [0.55, 0.85, 1.25];
-  const delayBase = [0.011, 0.016, 0.020];
-  lfoRates.forEach((rate, i) => {
-    const delay = actx.createDelay(0.05);
-    delay.delayTime.value = delayBase[i];
-
-    const lfo = actx.createOscillator();
-    lfo.frequency.value = rate;
-    const lfoGain = actx.createGain();
-    lfoGain.gain.value = 0.0045;
-    lfo.connect(lfoGain);
-    lfoGain.connect(delay.delayTime);
-    lfo.start();
-
-    masterBus.connect(delay);
-    const branch = actx.createGain();
-    branch.gain.value = 0.33;
-    delay.connect(branch);
-    branch.connect(wet);
+  actx = new (window.AudioContext || window.webkitAudioContext)({
+    latencyHint: 'interactive',
+    sampleRate: 44100
   });
-  wet.connect(chorusSend);
 
-  // ===== Брасс-фильтр =====
-  brassFilterNode = actx.createBiquadFilter();
-  brassFilterNode.type = 'lowpass';
-  brassFilterNode.frequency.value = state.brassCutoff;
-  brassFilterNode.Q.value = state.brassQ;
+  // Шина перед ensemble
+  const preBus = actx.createGain();
+  preBus.gain.value = 1.0;
 
-  // сухой путь для регистров без хоруса/брасс-фильтра (пианино, клавесин)
-  // ВАЖНО: НЕ подключать сюда masterBus — иначе хорус-голоса звучат
-  // и через хорус, и в обход него одновременно (двойная громкость → клиппинг)
-  const directBus = actx.createGain();
-  directBus.gain.value = 1.0;
+  // Шина после ensemble
+  ensembleOut = actx.createGain();
+  ensembleOut.gain.value = 1.0;
 
-  // ===== Лимитер на выходе — защита от клиппинга при наложении регистров =====
-  const limiter = actx.createDynamicsCompressor();
-  limiter.threshold.value = -6;
-  limiter.knee.value = 6;
-  limiter.ratio.value = 12;
-  limiter.attack.value = 0.003;
-  limiter.release.value = 0.15;
-  limiter.connect(outputGain);
+  buildEnsemble(preBus, ensembleOut);
 
-  chorusSend.connect(limiter);
-  brassFilterNode.connect(limiter);
-  directBus.connect(limiter);
+  // Мягкий фильтр на выходе — убирает цифровой "блеск"
+  const hpf = actx.createBiquadFilter();
+  hpf.type = 'highpass';
+  hpf.frequency.value = 55; // убрать подгудение низа
 
-  initAudio.directBus = directBus;
+  const lpf = actx.createBiquadFilter();
+  lpf.type = 'lowpass';
+  lpf.frequency.value = 7000; // срез верха как на реальных ВЧ-ограничителях тех лет
+  lpf.Q.value = 0.5;
 
-  // ===== ГНЧ — вибрато =====
-  const vibratoLfo = actx.createOscillator();
-  vibratoLfo.frequency.value = state.vibratoRate;
-  const vibratoGain = actx.createGain();
-  vibratoGain.gain.value = state.vibratoDepth * 6;
-  vibratoLfo.connect(vibratoGain);
-  vibratoLfo.start();
-  initAudio.vibratoLfo = vibratoLfo;
-  initAudio.vibratoGain = vibratoGain;
+  // Лимитер + вых. громкость
+  limiter = actx.createDynamicsCompressor();
+  limiter.threshold.value = -4;
+  limiter.knee.value = 4;
+  limiter.ratio.value = 10;
+  limiter.attack.value = 0.002;
+  limiter.release.value = 0.1;
 
-  // ===== аналоговый дрейф задающего генератора (0,3% нестабильность) =====
-  const driftLfo = actx.createOscillator();
-  driftLfo.frequency.value = 0.07; // очень медленный
-  driftLfo.type = 'sine';
-  const driftGain = actx.createGain();
-  driftGain.gain.value = state.drift * 100; // в центах примерно
-  driftLfo.connect(driftGain);
-  driftLfo.start();
-  initAudio.driftGain = driftGain;
+  const outGain = actx.createGain();
+  outGain.gain.value = P.volumePedal;
+  initAudio.outGain = outGain;
+  initAudio.preBus = preBus;
+
+  ensembleOut.connect(hpf);
+  hpf.connect(lpf);
+  lpf.connect(limiter);
+  limiter.connect(outGain);
+  outGain.connect(actx.destination);
+
+  // Vibrato LFO (по умолчанию выключен)
+  const vLfo = actx.createOscillator();
+  vLfo.frequency.value = P.vibratoRate;
+  const vGain = actx.createGain();
+  vGain.gain.value = 0;
+  vLfo.connect(vGain);
+  vLfo.start();
+  initAudio.vibratoGain = vGain;
 }
-
-const MAX_POLYPHONY = 16; // суммарно голосов (с учётом нескольких регистров на ноту)
-let voiceCount = 0;
-const noteOrder = []; // порядок взятия нот для voice stealing
 
 function midiToFreq(midi) {
   return 440 * Math.pow(2, (midi - 69) / 12);
 }
 
-function routeForRegister(reg, envGain) {
-  if (reg.throughBrass) {
-    envGain.connect(brassFilterNode);
-  } else if (reg.throughChorus) {
-    envGain.connect(masterBus);
-  } else {
-    envGain.connect(initAudio.directBus);
-  }
-}
+function createVoice(midi, regKey) {
+  const reg = P.registers[regKey];
+  const isBrass = regKey === 'brass' || regKey === 'trumpet';
+  const isPiano = regKey === 'piano' || regKey === 'clavier';
 
-function createRegisterVoice(midiNote, regKey) {
-  const reg = REGISTERS[regKey];
-  const freq = midiToFreq(midiNote + state.octaveShift * 12 + reg.octaveOffset * 12);
+  const freq = midiToFreq(midi + P.octaveShift * 12 + reg.oct * 12);
 
-  const osc1 = actx.createOscillator();
-  osc1.type = reg.wave;
-  osc1.frequency.value = freq;
+  // основной осциллятор с кастомной волной
+  const osc = actx.createOscillator();
+  if (isBrass) osc.setPeriodicWave(makeBrassWave());
+  else if (isPiano) osc.setPeriodicWave(makePianoWave());
+  else osc.setPeriodicWave(makeStringWave());
+  osc.frequency.value = freq;
 
+  // второй осциллятор чуть детюнирован — имитация двух слоёв делителя
   const osc2 = actx.createOscillator();
-  osc2.type = reg.wave;
+  if (isBrass) osc2.setPeriodicWave(makeBrassWave());
+  else if (isPiano) osc2.setPeriodicWave(makePianoWave());
+  else osc2.setPeriodicWave(makeStringWave());
   osc2.frequency.value = freq;
-  osc2.detune.value = 5;
+  osc2.detune.value = 4.5; // ~4.5 цента — лёгкий chorus внутри голоса
 
-  const vibDetune = actx.createGain();
-  vibDetune.gain.value = 1;
-  initAudio.vibratoGain.connect(vibDetune);
-  vibDetune.connect(osc1.detune);
-  vibDetune.connect(osc2.detune);
+  // vibrato подключаем к обоим
+  initAudio.vibratoGain.connect(osc.detune);
+  initAudio.vibratoGain.connect(osc2.detune);
 
-  initAudio.driftGain.connect(osc1.detune);
-  initAudio.driftGain.connect(osc2.detune);
+  const env = actx.createGain();
+  env.gain.value = 0;
 
-  const filter = actx.createBiquadFilter();
-  filter.type = 'lowpass';
-  filter.frequency.value = reg.filterFreq;
-  filter.Q.value = reg.filterQ;
+  // для фортепиано/клавесина — прямо в шину, минуя ensemble
+  const dest = (isPiano) ? actx.destination : initAudio.preBus;
 
-  const envGain = actx.createGain();
-  envGain.gain.value = 0;
+  osc.connect(env);
+  osc2.connect(env);
+  env.connect(dest);
 
-  osc1.connect(filter);
-  osc2.connect(filter);
-  filter.connect(envGain);
-  routeForRegister(reg, envGain);
-
+  const gainVal = reg.gain;
   const now = actx.currentTime;
-  envGain.gain.cancelScheduledValues(now);
-  envGain.gain.setValueAtTime(0, now);
-  envGain.gain.linearRampToValueAtTime(reg.gain, now + reg.attack);
+  // attack медленнее для струнных, быстрее для клавишных
+  const atk = isPiano ? 0.003 : P.attack;
+  env.gain.setValueAtTime(0, now);
+  env.gain.linearRampToValueAtTime(gainVal, now + atk);
 
-  osc1.start();
+  osc.start();
   osc2.start();
 
-  voiceCount++;
+  // cleanup после stop
   osc2.onended = () => {
-    try {
-      osc1.disconnect();
-      osc2.disconnect();
-      filter.disconnect();
-      envGain.disconnect();
-      vibDetune.disconnect();
-    } catch (e) { /* уже отключено */ }
-    voiceCount--;
+    try { osc.disconnect(); osc2.disconnect(); env.disconnect(); } catch(e) {}
   };
 
-  return { osc1, osc2, envGain, release: reg.release, regKey };
+  return { osc, osc2, env, release: isPiano ? 0.3 : P.release, regKey };
 }
 
-function sideForNote(midiNote) {
-  return midiNote < state.splitPoint ? 'left' : 'right';
-}
-
-function noteOn(midiNote) {
+function noteOn(midi) {
   if (!actx) initAudio();
   if (actx.state === 'suspended') actx.resume();
-  if (activeVoices[midiNote]) return;
+  if (voices[midi]) return;
 
-  const side = sideForNote(midiNote);
-  const regs = activeRegisters[side];
-  if (regs.size === 0) return;
+  const side = midi < P.splitPoint ? 'left' : 'right';
+  const activeRegs = Object.keys(P.registers).filter(k =>
+    P.registers[k].side === side && P.registers[k].on
+  );
+  if (!activeRegs.length) return;
 
-  // voice stealing: если голосов слишком много для телефона — гасим самую старую ноту
-  while (voiceCount + regs.size > MAX_POLYPHONY && noteOrder.length > 0) {
-    const oldest = noteOrder.shift();
-    const oldVoices = activeVoices[oldest];
-    if (oldVoices) releaseNote(oldest, oldVoices, 0.04); // быстрый fade, не щелчок
+  // voice stealing если полифония переполнена
+  while (noteOrder.length >= MAX_POLY) {
+    const old = noteOrder.shift();
+    if (voices[old]) doRelease(old, 0.05);
   }
 
-  const voices = [];
-  regs.forEach(regKey => {
-    voices.push(createRegisterVoice(midiNote, regKey));
-  });
-  activeVoices[midiNote] = voices;
-  noteOrder.push(midiNote);
+  voices[midi] = activeRegs.map(k => createVoice(midi, k));
+  noteOrder.push(midi);
 }
 
-function noteOff(midiNote) {
-  const voices = activeVoices[midiNote];
-  if (!voices) return;
-
-  if (sustainOn) {
-    sustainedVoices.add(midiNote);
-    return;
-  }
-  releaseNote(midiNote, voices);
-  const idx = noteOrder.indexOf(midiNote);
-  if (idx !== -1) noteOrder.splice(idx, 1);
-}
-
-function releaseNote(midiNote, voices, fadeOverride) {
+function doRelease(midi, fadeTime) {
+  const vs = voices[midi];
+  if (!vs) return;
   const now = actx.currentTime;
-  voices.forEach(v => {
-    const releaseTime = fadeOverride !== undefined ? fadeOverride : v.release;
-    v.envGain.gain.cancelScheduledValues(now);
-    v.envGain.gain.setValueAtTime(v.envGain.gain.value, now);
-    v.envGain.gain.linearRampToValueAtTime(0, now + releaseTime);
-    v.osc1.stop(now + releaseTime + 0.05);
-    v.osc2.stop(now + releaseTime + 0.05);
+  const t = fadeTime !== undefined ? fadeTime : P.release;
+  vs.forEach(v => {
+    v.env.gain.cancelScheduledValues(now);
+    v.env.gain.setValueAtTime(v.env.gain.value, now);
+    v.env.gain.linearRampToValueAtTime(0, now + t);
+    v.osc.stop(now + t + 0.05);
+    v.osc2.stop(now + t + 0.05);
   });
-  delete activeVoices[midiNote];
+  delete voices[midi];
+  const i = noteOrder.indexOf(midi);
+  if (i !== -1) noteOrder.splice(i, 1);
+}
+
+function noteOff(midi) {
+  if (!voices[midi]) return;
+  if (sustainOn) { sustained.add(midi); return; }
+  doRelease(midi);
 }
 
 function setSustain(on) {
   sustainOn = on;
-  if (!on) {
-    sustainedVoices.forEach(midiNote => {
-      const voices = activeVoices[midiNote];
-      if (voices) releaseNote(midiNote, voices);
-      const idx = noteOrder.indexOf(midiNote);
-      if (idx !== -1) noteOrder.splice(idx, 1);
-    });
-    sustainedVoices.clear();
-  }
+  if (!on) { sustained.forEach(m => doRelease(m)); sustained.clear(); }
 }
 
-function toggleRegister(side, regKey, on) {
-  if (on) activeRegisters[side].add(regKey);
-  else activeRegisters[side].delete(regKey);
+function setRegister(key, on) {
+  if (P.registers[key]) P.registers[key].on = on;
 }
 
-function setOctaveShift(shift) { state.octaveShift = Math.max(-2, Math.min(2, shift)); }
-function setSplitPoint(midi) { state.splitPoint = midi; }
-function setVibratoDepth(v) {
-  state.vibratoDepth = v;
-  if (initAudio.vibratoGain) initAudio.vibratoGain.gain.value = v * 6;
+function setOctave(n) { P.octaveShift = Math.max(-2, Math.min(2, n)); }
+function setSplit(midi) { P.splitPoint = midi; }
+function setVibrato(amt) {
+  P.vibratoAmt = amt;
+  if (initAudio.vibratoGain) initAudio.vibratoGain.gain.value = amt * 8;
 }
 function setVibratoRate(hz) {
-  state.vibratoRate = hz;
-  if (initAudio.vibratoLfo) initAudio.vibratoLfo.frequency.value = hz;
+  P.vibratoRate = hz;
 }
-function setChorusOn(on) {
-  state.chorusOn = on;
-  if (chorusSend) chorusSend.gain.value = on ? 1.0 : 0.0;
-}
-function setBrassCutoff(freq) {
-  state.brassCutoff = freq;
-  if (brassFilterNode) brassFilterNode.frequency.value = freq;
-}
-function setBrassQ(q) {
-  state.brassQ = q;
-  if (brassFilterNode) brassFilterNode.Q.value = q;
-}
-function setVolumePedal(v) {
-  state.volumePedal = v;
-  if (outputGain) outputGain.gain.value = v;
+function setVolume(v) {
+  P.volumePedal = v;
+  if (initAudio.outGain) initAudio.outGain.gain.value = v;
 }
 
 window.TOM1501 = {
-  noteOn, noteOff, setSustain, toggleRegister,
-  setOctaveShift, setSplitPoint,
-  setVibratoDepth, setVibratoRate, setChorusOn,
-  setBrassCutoff, setBrassQ, setVolumePedal,
-  REGISTERS, activeRegisters, state
+  noteOn, noteOff, setSustain, setRegister,
+  setOctave, setSplit, setVibrato, setVibratoRate, setVolume,
+  P
 };
 
 </script>
 <script>
-// ===== TOM-1501 UI v2 =====
+// ===== TOM-1501 UI v3 =====
 
-const NOTE_NAMES = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
-const START_MIDI = 48; // C3
-const NUM_KEYS = 25;
+const START_MIDI = 36; // C2 — расширяем диапазон
+const NUM_KEYS = 37;   // 3 октавы
+let octaveOffset = 0;
+const pressed = new Set();
 
-let currentOctaveOffset = 0;
-const pressedKeys = new Set();
+const REG_LABELS = {
+  bass16:'Контрабас 16\'', cello8:'Виолончель 8\'', viola8:'Альты 8\'',
+  piano:'Пианино', clavier:'Клавесин', accomp:'Аккомп.',
+  violin8:'Скрипки 8\'', violin4:'Скрипки 4\'', tutti:'Tutti',
+  brass:'Медные', trumpet:'Труба'
+};
 
-function isBlackKey(midi) {
-  const n = midi % 12;
-  return [1,3,6,8,10].includes(n);
-}
-
-function countWhiteKeys() {
-  let count = 0;
-  for (let i = 0; i < NUM_KEYS; i++) if (!isBlackKey(START_MIDI + i)) count++;
-  return count;
+function isBlack(midi) { return [1,3,6,8,10].includes(midi % 12); }
+function countWhites() {
+  let n = 0;
+  for (let i = 0; i < NUM_KEYS; i++) if (!isBlack(START_MIDI + i)) n++;
+  return n;
 }
 
 function buildKeyboard() {
-  const whiteContainer = document.getElementById('whiteKeys');
-  const blackContainer = document.getElementById('blackKeys');
-  whiteContainer.innerHTML = '';
-  blackContainer.innerHTML = '';
-
-  let whiteIndex = 0;
-  const whiteKeyWidth = 100 / countWhiteKeys();
-
+  const wc = document.getElementById('wKeys');
+  const bc = document.getElementById('bKeys');
+  wc.innerHTML = bc.innerHTML = '';
+  const ww = 100 / countWhites();
+  let wi = 0;
   for (let i = 0; i < NUM_KEYS; i++) {
     const midi = START_MIDI + i;
-    if (isBlackKey(midi)) {
-      const key = document.createElement('div');
-      key.className = 'key black';
-      key.dataset.midi = midi;
-      key.style.left = (whiteIndex * whiteKeyWidth - whiteKeyWidth * 0.3) + '%';
-      key.style.width = (whiteKeyWidth * 0.6) + '%';
-      bindKeyEvents(key, midi);
-      blackContainer.appendChild(key);
+    const el = document.createElement('div');
+    if (isBlack(midi)) {
+      el.className = 'key blk';
+      el.dataset.midi = midi;
+      el.style.left = (wi * ww - ww * 0.3) + '%';
+      el.style.width = (ww * 0.62) + '%';
+      bindKey(el, midi);
+      bc.appendChild(el);
     } else {
-      const key = document.createElement('div');
-      key.className = 'key white';
-      key.dataset.midi = midi;
-      key.style.width = whiteKeyWidth + '%';
-      key.textContent = (midi % 12 === 0) ? ('C' + (Math.floor(midi / 12) - 1)) : '';
-      bindKeyEvents(key, midi);
-      whiteContainer.appendChild(key);
-      whiteIndex++;
+      el.className = 'key wht';
+      el.dataset.midi = midi;
+      el.style.width = ww + '%';
+      if (midi % 12 === 0) el.textContent = 'C' + (Math.floor(midi/12)-1);
+      bindKey(el, midi);
+      wc.appendChild(el);
+      wi++;
     }
   }
-  updateSplitMarker();
+  updateSplit();
 }
 
-function bindKeyEvents(el, midi) {
-  const press = (e) => {
+function bindKey(el, midi) {
+  const on = e => {
     e.preventDefault();
-    if (pressedKeys.has(midi)) return;
-    pressedKeys.add(midi);
-    el.classList.add('active');
+    if (pressed.has(midi)) return;
+    pressed.add(midi);
+    el.classList.add('act');
     window.TOM1501.noteOn(midi);
   };
-  const release = (e) => {
+  const off = e => {
     if (e) e.preventDefault();
-    if (!pressedKeys.has(midi)) return;
-    pressedKeys.delete(midi);
-    el.classList.remove('active');
+    if (!pressed.has(midi)) return;
+    pressed.delete(midi);
+    el.classList.remove('act');
     window.TOM1501.noteOff(midi);
   };
-  el.addEventListener('touchstart', press, { passive: false });
-  el.addEventListener('touchend', release, { passive: false });
-  el.addEventListener('touchcancel', release, { passive: false });
-  el.addEventListener('mousedown', press);
-  el.addEventListener('mouseup', release);
-  el.addEventListener('mouseleave', release);
+  el.addEventListener('touchstart', on, {passive:false});
+  el.addEventListener('touchend', off, {passive:false});
+  el.addEventListener('touchcancel', off, {passive:false});
+  el.addEventListener('mousedown', on);
+  el.addEventListener('mouseup', off);
+  el.addEventListener('mouseleave', off);
 }
 
-function bindOctaveSwipe() {
-  const area = document.getElementById('keyboardArea');
-  let startX = null;
-  let swiped = false;
-  area.addEventListener('touchstart', (e) => {
-    if (e.touches.length === 2) { startX = e.touches[0].clientX; swiped = false; }
-  }, { passive: true });
-  area.addEventListener('touchmove', (e) => {
-    if (startX === null || e.touches.length < 2 || swiped) return;
-    const dx = e.touches[0].clientX - startX;
-    if (Math.abs(dx) > 60) { shiftOctave(dx > 0 ? 1 : -1); swiped = true; }
-  }, { passive: true });
-  area.addEventListener('touchend', () => { startX = null; });
+function updateSplit() {
+  const sp = window.TOM1501.P.splitPoint;
+  let wi = 0;
+  for (let i = 0; i < NUM_KEYS; i++) {
+    if (START_MIDI + i >= sp) break;
+    if (!isBlack(START_MIDI + i)) wi++;
+  }
+  const pct = (wi / countWhites()) * 100;
+  document.getElementById('split').style.left = pct + '%';
 }
 
-function shiftOctave(dir) {
-  currentOctaveOffset = Math.max(-2, Math.min(2, currentOctaveOffset + dir));
-  window.TOM1501.setOctaveShift(currentOctaveOffset);
-  document.getElementById('octaveLabel').textContent =
-    'Октава: ' + (currentOctaveOffset > 0 ? '+' + currentOctaveOffset : currentOctaveOffset);
-}
-
-function updateSplitMarker() {
-  const idx = window.TOM1501.state.splitPoint - START_MIDI;
-  let whiteCountBefore = 0;
-  for (let i = 0; i < idx; i++) if (!isBlackKey(START_MIDI + i)) whiteCountBefore++;
-  const pct = (whiteCountBefore / countWhiteKeys()) * 100;
-  document.getElementById('splitMarker').style.left = pct + '%';
-}
-
-// ===== Панель регистров =====
-function buildRegisterPanel() {
-  const leftPanel = document.getElementById('leftRegisters');
-  const rightPanel = document.getElementById('rightRegisters');
-  leftPanel.innerHTML = '';
-  rightPanel.innerHTML = '';
-
-  const regs = window.TOM1501.REGISTERS;
-  Object.keys(regs).forEach(key => {
-    const reg = regs[key];
+function buildRegisters() {
+  ['leftRegs','rightRegs'].forEach(id => document.getElementById(id).innerHTML = '');
+  const regs = window.TOM1501.P.registers;
+  Object.keys(regs).forEach(k => {
+    const r = regs[k];
     const btn = document.createElement('div');
-    btn.className = 'reg-btn';
-    btn.textContent = reg.name;
-    btn.dataset.reg = key;
-    btn.dataset.side = reg.side;
-
-    if (window.TOM1501.activeRegisters[reg.side].has(key)) btn.classList.add('active');
-
-    btn.addEventListener('click', () => {
-      const isActive = btn.classList.toggle('active');
-      window.TOM1501.toggleRegister(reg.side, key, isActive);
-    });
-
-    if (reg.side === 'left') leftPanel.appendChild(btn);
-    else rightPanel.appendChild(btn);
+    btn.className = 'rbtn' + (r.on ? ' on' : '');
+    btn.textContent = REG_LABELS[k] || k;
+    btn.onclick = () => {
+      r.on = !r.on;
+      btn.classList.toggle('on', r.on);
+      window.TOM1501.setRegister(k, r.on);
+    };
+    document.getElementById(r.side === 'left' ? 'leftRegs' : 'rightRegs').appendChild(btn);
   });
 }
 
 function bindControls() {
-  const sustainBtn = document.getElementById('sustainBtn');
-  const onSustainStart = (e) => { e.preventDefault(); sustainBtn.classList.add('active'); window.TOM1501.setSustain(true); };
-  const onSustainEnd = (e) => { if (e) e.preventDefault(); sustainBtn.classList.remove('active'); window.TOM1501.setSustain(false); };
-  sustainBtn.addEventListener('touchstart', onSustainStart, { passive: false });
-  sustainBtn.addEventListener('touchend', onSustainEnd, { passive: false });
-  sustainBtn.addEventListener('mousedown', onSustainStart);
-  sustainBtn.addEventListener('mouseup', onSustainEnd);
+  // sustain
+  const sb = document.getElementById('sus');
+  sb.addEventListener('touchstart', e => { e.preventDefault(); sb.classList.add('on'); window.TOM1501.setSustain(true); }, {passive:false});
+  sb.addEventListener('touchend', e => { e.preventDefault(); sb.classList.remove('on'); window.TOM1501.setSustain(false); }, {passive:false});
+  sb.addEventListener('mousedown', () => { sb.classList.add('on'); window.TOM1501.setSustain(true); });
+  sb.addEventListener('mouseup', () => { sb.classList.remove('on'); window.TOM1501.setSustain(false); });
 
-  document.getElementById('vibratoDepth').addEventListener('input', e => window.TOM1501.setVibratoDepth(parseFloat(e.target.value)));
-  document.getElementById('vibratoRate').addEventListener('input', e => window.TOM1501.setVibratoRate(parseFloat(e.target.value)));
+  // vibrato
+  document.getElementById('vibAmt').addEventListener('input', e => window.TOM1501.setVibrato(parseFloat(e.target.value)));
+  document.getElementById('vibRate').addEventListener('input', e => window.TOM1501.setVibratoRate(parseFloat(e.target.value)));
 
-  document.getElementById('chorusToggle').addEventListener('click', (e) => {
-    const on = e.target.classList.toggle('active');
-    window.TOM1501.setChorusOn(on);
-  });
+  // volume
+  document.getElementById('vol').addEventListener('input', e => window.TOM1501.setVolume(parseFloat(e.target.value)));
 
-  document.getElementById('brassCutoff').addEventListener('input', e => window.TOM1501.setBrassCutoff(parseFloat(e.target.value)));
-  document.getElementById('brassQ').addEventListener('input', e => window.TOM1501.setBrassQ(parseFloat(e.target.value)));
+  // octave
+  document.getElementById('octD').onclick = () => {
+    octaveOffset = Math.max(-2, octaveOffset - 1);
+    window.TOM1501.setOctave(octaveOffset);
+    document.getElementById('octLbl').textContent = 'Окт: ' + (octaveOffset > 0 ? '+':'') + octaveOffset;
+  };
+  document.getElementById('octU').onclick = () => {
+    octaveOffset = Math.min(2, octaveOffset + 1);
+    window.TOM1501.setOctave(octaveOffset);
+    document.getElementById('octLbl').textContent = 'Окт: ' + (octaveOffset > 0 ? '+':'') + octaveOffset;
+  };
 
-  document.getElementById('volumePedal').addEventListener('input', e => window.TOM1501.setVolumePedal(parseFloat(e.target.value)));
+  // split
+  document.getElementById('spD').onclick = () => {
+    window.TOM1501.P.splitPoint = Math.max(START_MIDI+1, window.TOM1501.P.splitPoint - 1);
+    updateSplit();
+  };
+  document.getElementById('spU').onclick = () => {
+    window.TOM1501.P.splitPoint = Math.min(START_MIDI+NUM_KEYS-1, window.TOM1501.P.splitPoint + 1);
+    updateSplit();
+  };
+}
 
-  document.getElementById('octaveLeft').addEventListener('click', () => shiftOctave(-1));
-  document.getElementById('octaveRight').addEventListener('click', () => shiftOctave(1));
-
-  document.getElementById('splitDown').addEventListener('click', () => {
-    window.TOM1501.setSplitPoint(Math.max(START_MIDI + 1, window.TOM1501.state.splitPoint - 1));
-    updateSplitMarker();
-  });
-  document.getElementById('splitUp').addEventListener('click', () => {
-    window.TOM1501.setSplitPoint(Math.min(START_MIDI + NUM_KEYS - 1, window.TOM1501.state.splitPoint + 1));
-    updateSplitMarker();
-  });
+// свайп двумя пальцами = смена октавы
+function bindSwipe() {
+  const area = document.getElementById('kbArea');
+  let sx = null, swiped = false;
+  area.addEventListener('touchstart', e => { if (e.touches.length===2){sx=e.touches[0].clientX;swiped=false;} }, {passive:true});
+  area.addEventListener('touchmove', e => {
+    if (!sx||e.touches.length<2||swiped) return;
+    const dx = e.touches[0].clientX - sx;
+    if (Math.abs(dx)>50) {
+      octaveOffset = Math.max(-2,Math.min(2,octaveOffset+(dx>0?1:-1)));
+      window.TOM1501.setOctave(octaveOffset);
+      document.getElementById('octLbl').textContent = 'Окт: ' + (octaveOffset>0?'+':'') + octaveOffset;
+      swiped=true;
+    }
+  }, {passive:true});
 }
 
 window.addEventListener('DOMContentLoaded', () => {
   buildKeyboard();
-  buildRegisterPanel();
-  bindOctaveSwipe();
+  buildRegisters();
   bindControls();
+  bindSwipe();
 });
 
 </script>
