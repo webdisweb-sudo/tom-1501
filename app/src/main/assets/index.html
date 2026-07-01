@@ -122,7 +122,7 @@ const P = {
   vibratoRate: 5.2,
   vibratoAmt:  0,       // по умолчанию выключено как на оригинале
   volumePedal: 0.82,
-  splitPoint:  60,
+  splitPoint:  48,
   octaveShift: 0,
 
   // регистры — как органные стопы, можно несколько одновременно
@@ -530,10 +530,13 @@ function buildRegisters() {
     const btn = document.createElement('div');
     btn.className = 'rbtn' + (r.on ? ' on' : '');
     btn.textContent = REG_LABELS[k] || k;
-    btn.onclick = () => {
-      r.on = !r.on;
-      btn.classList.toggle('on', r.on);
-      window.TOM1501.setRegister(k, r.on);
+    btn.dataset.regKey = k;
+    btn.onclick = function() {
+      var key = this.dataset.regKey;
+      var reg = window.TOM1501.P.registers[key];
+      reg.on = !reg.on;
+      this.classList.toggle('on', reg.on);
+      window.TOM1501.setRegister(key, reg.on);
     };
     document.getElementById(r.side === 'left' ? 'leftRegs' : 'rightRegs').appendChild(btn);
   });
